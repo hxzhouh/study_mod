@@ -8,17 +8,19 @@ package client
 
 import (
 	"fmt"
+	"github.com/hxzhouh/study_mod/rpc/server"
 	"log"
 	"net/rpc"
 )
 
 func ClientMain() {
-	client,err := rpc.Dial("tcp","localhost:1234")
+	client, err := rpc.Dial("tcp", "localhost:1234")
 	if err != nil {
 		log.Fatal("Dial TCP error:", err)
 	}
 	var resp string
-	err = client.Call("HelloService.Hello","hello",&resp)
+	funcName := fmt.Sprintf("%s.%s", server.HelloServiceName, "Hello")
+	err = client.Call(funcName, "wubeibei", &resp)
 	if err != nil {
 		log.Fatal(err)
 	}

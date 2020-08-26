@@ -15,13 +15,19 @@ import (
 type SayHello struct {
 }
 
+type HelloServiceInterface = interface {
+	Hello(req string, resp *string) error
+}
+
 func (t *SayHello) Hello(req string, resp *string) error {
 	*resp = "Hello:" + req
 	return nil
 }
 
+const HelloServiceName = "HelloService"
+
 func ServerMain() {
-	rpc.RegisterName("HelloService", new(SayHello))
+	_ = RegisterHelloService(new(SayHello))
 	listener, err := net.Listen("tcp", ":1234")
 	if err != nil {
 		log.Fatal("Listen TCP error:", err)
@@ -31,4 +37,8 @@ func ServerMain() {
 		log.Fatal("Accept error:", err)
 	}
 	rpc.ServeConn(conn)
+}
+
+func RegisterHelloService(svc HelloServiceInterface) error {
+	return rpc.RegisterName(HelloServiceName, svc)
 }
