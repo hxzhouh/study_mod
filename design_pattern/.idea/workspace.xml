@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0dcceeae-7d03-48f5-bffe-bfb90c750d75" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="D:\Go" />
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+    <option name="urls">
+      <list>
+        <option value="file://$PROJECT_DIR$/../../common/easy-grpc" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ZsuzmQQXw5Rvm23xrqsGTuvhwi" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunManager" selected="Go Test.TestCondTest in design_pattern/01_singleton">
+    <configuration name="TestCondTest in design_pattern/01_singleton" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="design_pattern" />
+      <working_directory value="$PROJECT_DIR$/01_singleton" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="design_pattern/01_singleton" />
+      <pattern value="^TestCondTest$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestNewDuck in design_pattern/00_simple_factory" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="design_pattern" />
+      <working_directory value="$PROJECT_DIR$/00_simple_factory" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="design_pattern/00_simple_factory" />
+      <pattern value="^TestNewDuck$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestSingleton in design_pattern/01_singleton" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="design_pattern" />
+      <working_directory value="$PROJECT_DIR$/01_singleton" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="design_pattern/01_singleton" />
+      <pattern value="^TestSingleton$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Test.TestCondTest in design_pattern/01_singleton" />
+        <item itemvalue="Go Test.TestSingleton in design_pattern/01_singleton" />
+        <item itemvalue="Go Test.TestNewDuck in design_pattern/00_simple_factory" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+    <proxy>direct</proxy>
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="2517" height="391" key="GridCell.Tab.0.bottom" timestamp="1585657234690">
+      <screen x="1920" y="-363" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="391" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-363.2560.1400@1920.-363.2560.1400" timestamp="1585657234690" />
+    <state width="2517" height="391" key="GridCell.Tab.0.center" timestamp="1585657234690">
+      <screen x="1920" y="-363" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="391" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-363.2560.1400@1920.-363.2560.1400" timestamp="1585657234690" />
+    <state width="2517" height="391" key="GridCell.Tab.0.left" timestamp="1585657234690">
+      <screen x="1920" y="-363" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="391" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-363.2560.1400@1920.-363.2560.1400" timestamp="1585657234690" />
+    <state width="2517" height="391" key="GridCell.Tab.0.right" timestamp="1585657234690">
+      <screen x="1920" y="-363" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="391" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-363.2560.1400@1920.-363.2560.1400" timestamp="1585657234690" />
+    <state x="2701" y="-21" key="SettingsEditor" timestamp="1585655761629">
+      <screen x="1920" y="-363" width="2560" height="1400" />
+    </state>
+    <state x="2701" y="-21" key="SettingsEditor/0.0.1920.1040/1920.-363.2560.1400@1920.-363.2560.1400" timestamp="1585655761629" />
+    <state x="2807" y="37" width="786" height="600" key="find.popup" timestamp="1585644482512">
+      <screen x="1920" y="-363" width="2560" height="1400" />
+    </state>
+    <state x="2807" y="37" width="786" height="600" key="find.popup/0.0.1920.1040/1920.-363.2560.1400@1920.-363.2560.1400" timestamp="1585644482512" />
+    <state x="2863" y="-48" width="672" height="678" key="search.everywhere.popup" timestamp="1585648176535">
+      <screen x="1920" y="-363" width="2560" height="1400" />
+    </state>
+    <state x="2863" y="-48" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.-363.2560.1400@1920.-363.2560.1400" timestamp="1585648176535" />
+  </component>
+</project>
