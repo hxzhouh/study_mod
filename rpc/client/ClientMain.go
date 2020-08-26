@@ -18,5 +18,6 @@ func ClientMain() {
 	}
 	var resp string
 	client.Hello("wubeibei", &resp)
+
 	fmt.Println(resp)
 }

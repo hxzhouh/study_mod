@@ -11,6 +11,7 @@ import (
 	"log"
 	"net"
 	"net/rpc"
+	"net/rpc/jsonrpc"
 )
 
 type SayHello struct {
@@ -22,6 +23,7 @@ type HelloServiceInterface = interface {
 
 func (t *SayHello) Hello(req string, resp *string) error {
 	*resp = "Hello:" + req
+
 	return nil
 }
 
@@ -31,11 +33,15 @@ func ServerMain() {
 	if err != nil {
 		log.Fatal("Listen TCP error:", err)
 	}
-	conn, err := listener.Accept()
-	if err != nil {
-		log.Fatal("Accept error:", err)
+
+	for {
+		conn, err := listener.Accept()
+		if err != nil {
+			log.Fatal("Accept error:", err)
+		}
+		go rpc.ServeCodec(jsonrpc.NewServerCodec(conn))
 	}
-	rpc.ServeConn(conn)
+
 }
 
 func RegisterHelloService(svc HelloServiceInterface) error {
