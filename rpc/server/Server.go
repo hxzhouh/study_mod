@@ -7,6 +7,7 @@
 package server
 
 import (
+	"github.com/hxzhouh/study_mod/rpc/utils"
 	"log"
 	"net"
 	"net/rpc"
@@ -24,8 +25,6 @@ func (t *SayHello) Hello(req string, resp *string) error {
 	return nil
 }
 
-const HelloServiceName = "HelloService"
-
 func ServerMain() {
 	_ = RegisterHelloService(new(SayHello))
 	listener, err := net.Listen("tcp", ":1234")
@@ -40,5 +39,5 @@ func ServerMain() {
 }
 
 func RegisterHelloService(svc HelloServiceInterface) error {
-	return rpc.RegisterName(HelloServiceName, svc)
+	return rpc.RegisterName(utils.HelloServiceName, svc)
 }
