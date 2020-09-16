@@ -7,7 +7,9 @@
 package client
 
 import (
+	"fmt"
 	"github.com/hxzhouh/study_mod/rpc/utils"
+	"log"
 	"net"
 	"net/rpc"
 	"net/rpc/jsonrpc"
@@ -28,5 +30,20 @@ func DialHelloService(network, address string) (*HelloServiceClient, error) {
 	return &HelloServiceClient{Client: client}, nil
 }
 func (t *HelloServiceClient) Hello(req string, resp *string) error {
-	return t.Client.Call(utils.HelloServiceName+".Hello", req, resp)
+	doClientWork(t.Client)
+	return nil
+	//return t.Client.Call(utils.HelloServiceName+".Hello", req, resp)
+}
+
+func doClientWork(client *rpc.Client) {
+	helloCall := client.Go(utils.HelloServiceName+".Hello", "wubeibei", new(string), nil)
+	// do some Things
+
+	helloCall = <-helloCall.Done //这里会阻塞等待返回
+	if err := helloCall.Error; err != nil {
+		log.Fatal(err)
+	}
+	args := helloCall.Args.(string)
+	reply := helloCall.Reply.(*string)
+	fmt.Println(args, *reply)
 }
