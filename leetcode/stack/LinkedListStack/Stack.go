@@ -15,9 +15,7 @@ type Stack struct {
 }
 
 func InitNewStack() *Stack {
-	return &Stack{
-
-	}
+	return &Stack{}
 }
 func (t *Stack) Pop() (int, error) {
 
