@@ -5,31 +5,27 @@ import (
 	"testing"
 )
 
-func Test_deleteDuplicates_82(t *testing.T) {
-	r := &ListNode{
+func Test_reverseList(t *testing.T) {
+	array := &ListNode{
 		Val: 1,
 		Next: &ListNode{
-			Val: 1,
+			Val: 2,
 			Next: &ListNode{
-				Val: 1,
+				Val: 3,
 				Next: &ListNode{
-					Val: 2,
+					Val: 4,
 					Next: &ListNode{
-						Val: 3,
+						Val: 5,
 						Next: &ListNode{
-							Val: 4,
-							Next: &ListNode{
-								Val:  5,
-								Next: nil,
-							},
+							Val:  6,
+							Next: nil,
 						},
 					},
 				},
 			},
 		},
 	}
-	r = deleteDuplicates_82(r)
-
+	r := reverseList(array)
 	for r != nil {
 		fmt.Println(r.Val)
 		r = r.Next
