@@ -7,7 +7,7 @@
 package linkedList
 
 func hasCycle(head *ListNode) bool {
-	if head ==nil {
+	if head == nil {
 		return false
 	}
 	fast := head.Next
@@ -15,8 +15,8 @@ func hasCycle(head *ListNode) bool {
 		if fast == head {
 			return true
 		}
-		fast= fast.Next.Next
-		head=head.Next
+		fast = fast.Next.Next
+		head = head.Next
 	}
 	return false
 }
