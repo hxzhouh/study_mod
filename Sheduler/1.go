@@ -4,7 +4,7 @@ func hello(msg string) {
 	println(msg)
 }
 
-func main() {
+func mainq() {
 	go hello("hello world")
 }
 
