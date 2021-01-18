@@ -1,9 +1,0 @@
-
-
-
-
-
-
-func main(){
-	println
-}
