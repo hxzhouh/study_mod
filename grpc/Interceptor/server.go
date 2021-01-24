@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/hxzhouh/study_mod/grpc/protobuf"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/reflection"
 	"log"
 	"net"
@@ -36,12 +37,16 @@ func StreamServerInterceptor(srv interface{}, ss grpc.ServerStream, info *grpc.S
 
 func ServerMain() {
 	port := ":8000"
+	c, err := credentials.NewServerTLSFromFile("../conf/server.pem", "../conf/server.key")
+	if err != nil {
+		log.Fatalf("credentials.NewServerTLSFromFile err: %v", err)
+	}
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
 	s := grpc.NewServer(grpc.StreamInterceptor(StreamServerInterceptor),
-		grpc.UnaryInterceptor(UnaryServerInterceptor))
+		grpc.UnaryInterceptor(UnaryServerInterceptor), grpc.Creds(c))
 	protobuf.RegisterHelloServer(s, &HelloServiceImpl{})
 	reflection.Register(s)
 	if err := s.Serve(lis); err != nil {
