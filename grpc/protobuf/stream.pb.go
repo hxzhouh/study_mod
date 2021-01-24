@@ -7,7 +7,11 @@
 package protobuf
 
 import (
+	context "context"
 	proto "github.com/golang/protobuf/proto"
+	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -138,7 +142,8 @@ var file_stream_proto_rawDesc = []byte{
 	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x52, 0x65, 0x71, 0x75,
 	0x65, 0x73, 0x74, 0x1a, 0x18, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x53,
 	0x74, 0x72, 0x65, 0x61, 0x6d, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x28,
-	0x01, 0x30, 0x01, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x01, 0x30, 0x01, 0x42, 0x0c, 0x5a, 0x0a, 0x2e, 0x3b, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
+	0x66, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -217,4 +222,118 @@ func file_stream_proto_init() {
 	file_stream_proto_rawDesc = nil
 	file_stream_proto_goTypes = nil
 	file_stream_proto_depIdxs = nil
+}
+
+// Reference imports to suppress errors if they are not otherwise used.
+var _ context.Context
+var _ grpc.ClientConnInterface
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion6
+
+// StreamClient is the client API for Stream service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type StreamClient interface {
+	// 双向流式rpc，同时在请求参数前和响应参数前加上stream
+	Conversations(ctx context.Context, opts ...grpc.CallOption) (Stream_ConversationsClient, error)
+}
+
+type streamClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewStreamClient(cc grpc.ClientConnInterface) StreamClient {
+	return &streamClient{cc}
+}
+
+func (c *streamClient) Conversations(ctx context.Context, opts ...grpc.CallOption) (Stream_ConversationsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_Stream_serviceDesc.Streams[0], "/protobuf.Stream/Conversations", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &streamConversationsClient{stream}
+	return x, nil
+}
+
+type Stream_ConversationsClient interface {
+	Send(*StreamRequest) error
+	Recv() (*StreamResponse, error)
+	grpc.ClientStream
+}
+
+type streamConversationsClient struct {
+	grpc.ClientStream
+}
+
+func (x *streamConversationsClient) Send(m *StreamRequest) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *streamConversationsClient) Recv() (*StreamResponse, error) {
+	m := new(StreamResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+// StreamServer is the server API for Stream service.
+type StreamServer interface {
+	// 双向流式rpc，同时在请求参数前和响应参数前加上stream
+	Conversations(Stream_ConversationsServer) error
+}
+
+// UnimplementedStreamServer can be embedded to have forward compatible implementations.
+type UnimplementedStreamServer struct {
+}
+
+func (*UnimplementedStreamServer) Conversations(Stream_ConversationsServer) error {
+	return status.Errorf(codes.Unimplemented, "method Conversations not implemented")
+}
+
+func RegisterStreamServer(s *grpc.Server, srv StreamServer) {
+	s.RegisterService(&_Stream_serviceDesc, srv)
+}
+
+func _Stream_Conversations_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(StreamServer).Conversations(&streamConversationsServer{stream})
+}
+
+type Stream_ConversationsServer interface {
+	Send(*StreamResponse) error
+	Recv() (*StreamRequest, error)
+	grpc.ServerStream
+}
+
+type streamConversationsServer struct {
+	grpc.ServerStream
+}
+
+func (x *streamConversationsServer) Send(m *StreamResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *streamConversationsServer) Recv() (*StreamRequest, error) {
+	m := new(StreamRequest)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+var _Stream_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "protobuf.Stream",
+	HandlerType: (*StreamServer)(nil),
+	Methods:     []grpc.MethodDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "Conversations",
+			Handler:       _Stream_Conversations_Handler,
+			ServerStreams: true,
+			ClientStreams: true,
+		},
+	},
+	Metadata: "stream.proto",
 }

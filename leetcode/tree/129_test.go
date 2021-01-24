@@ -1,7 +1,11 @@
 package tree
 
-import "testing"
+import (
+	"fmt"
+	"runtime"
+	"testing"
+)
 
 func TestClacSliceToInt(t *testing.T) {
-
+	fmt.Println(runtime.GOOS)
 }

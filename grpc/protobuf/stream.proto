@@ -1,0 +1,19 @@
+syntax = "proto3";
+package protobuf;
+option go_package = ".;protobuf";
+// 定义流式请求信息
+message StreamRequest{
+  //流请求参数
+  string question = 1;
+}
+
+// 定义流式响应信息
+message StreamResponse{
+  //流响应数据
+  string answer = 1;
+}
+
+service Stream{
+  // 双向流式rpc，同时在请求参数前和响应参数前加上stream
+  rpc Conversations(stream StreamRequest) returns(stream StreamResponse){};
+}

@@ -1,5 +1,6 @@
 syntax = "proto3";
 package protobuf;
+option go_package = ".;protobuf";
 
 message HelloReq {
     string name = 1;
